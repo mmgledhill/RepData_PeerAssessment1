@@ -1,4 +1,9 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
 ## Loading and preprocessing the data
 
 ### Load the data
@@ -61,7 +66,7 @@ totalsteps<-ddply(actdata,.(date),summarize,sum=sum(steps))
 hist(totalsteps$sum,breaks=10,main="Histogram of Steps Taken per Day",xlab="Total Steps/Day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-1-1.png) 
+![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png) 
 
 ##Calculate and report the mean and median of the total number of steps taken per day  
 
@@ -90,7 +95,7 @@ avgstepint<-ddply(actdata,.(time),summarize,avg=mean(steps,na.rm=TRUE))
 plot(y=avgstepint$avg,x=avgstepint$time,type="l",main="Average Daily Activity Pattern (NAs removed)",xlab="HH:MM",ylab="Avg Steps")
 ```
 
-![](PA1_template_files/figure-html/timeplot-1.png) 
+![plot of chunk timeplot](figure/timeplot-1.png) 
 
 ### Which 5-min interval on average across all the days in the data set contains the max number of steps  
 
@@ -157,7 +162,7 @@ totalstepsimputed<-ddply(actdatanew,.(date),summarize,sum=sum(imputedsteps))
 hist(totalstepsimputed$sum,breaks=10,main="Histogram of Steps Taken per Day (NAs replaced with Interval Avg)",xlab="Total Steps/Day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
 
 - Calculate and report the mean and median of the total number of steps taken per day
 
@@ -214,4 +219,4 @@ library(lattice)
 xyplot(totaldaytype$avg~totaldaytype$interval | as.factor(totaldaytype$daytype),type="l",xlab="Interval",ylab="Number of Steps")
 ```
 
-![](PA1_template_files/figure-html/weekdayplot-1.png) 
+![plot of chunk weekdayplot](figure/weekdayplot-1.png) 
